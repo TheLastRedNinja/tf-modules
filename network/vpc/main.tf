@@ -44,7 +44,7 @@ module "public-subnet" {
   subnet-specs = lookup(var.subnets, var.name-for-default-public-subnet, local.default-subnet-specs)
 
   availability-zones-in-use = var.azs
-  create-nat-gateway        = true
+  create-nat-gateway        = false
 
   default-tags = var.default-tags
 }
