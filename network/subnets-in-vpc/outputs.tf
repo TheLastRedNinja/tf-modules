@@ -6,7 +6,7 @@ output "subnets" {
     cidr-block     = subnet.cidr_block
     azs            = azs
     route-table-id = aws_route_table.this[azs].id
-    nat-gateway-id = aws_nat_gateway.this[azs].id
+    nat-gateway-id = try(aws_nat_gateway.this[azs].id, null)
     }
   }
 }
