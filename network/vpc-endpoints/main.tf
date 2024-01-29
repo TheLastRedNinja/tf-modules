@@ -2,26 +2,16 @@
 # VPC endpoints and security groups
 #=======================================================================================================================
 
-/*
-required for eks:
-    com.amazonaws.<region>.ec2
-    com.amazonaws.<region>.ecr.api
-    com.amazonaws.<region>.ecr.dkr
-    com.amazonaws.<region>.s3 – For pulling container images
-    com.amazonaws.<region>.logs – For CloudWatch Logs
-    com.amazonaws.<region>.sts – If using AWS Fargate or IAM roles for service accounts
-    com.amazonaws.<region>.elasticloadbalancing – If using Application Load Balancers
-    com.amazonaws.<region>.autoscaling – If using Cluster Autoscaler
-    com.amazonaws.<region>.appmesh-envoy-management – If using App Mesh
-
-already implemented:
-  s3
-  ssm
-  ssm_messages
-  ec2_messages
-  cloudwatch_logs
-  secrets_manager
-*/
+#required for eks:
+#    com.amazonaws.<region>.ec2
+#    com.amazonaws.<region>.ecr.api
+#    com.amazonaws.<region>.ecr.dkr
+#    com.amazonaws.<region>.s3 – For pulling container images
+#    com.amazonaws.<region>.logs – For CloudWatch Logs
+#    com.amazonaws.<region>.sts – If using AWS Fargate or IAM roles for service accounts
+#    com.amazonaws.<region>.elasticloadbalancing – If using Application Load Balancers
+#    com.amazonaws.<region>.autoscaling – If using Cluster Autoscaler
+#    com.amazonaws.<region>.appmesh-envoy-management – If using App Mesh
 
 # -----------------------------------------------------------
 # lookup of subnets
@@ -67,7 +57,7 @@ resource "aws_security_group" "ssm_endpoint" {
     protocol    = "tcp"
     from_port   = "0"
     to_port     = "65535"
-    description = "Traffic to AWS"
+    description = "Traffic from AWS"
     cidr_blocks = [data.aws_vpc.vpc.cidr_block]
   }
   egress {
