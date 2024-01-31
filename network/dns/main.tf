@@ -7,6 +7,7 @@ resource "aws_route53_zone" "public-zone" {
   for_each = var.subdomain-specs
 
   name              = "${each.value.name}.${var.root-domain}"
+  comment           = each.value.comment
   delegation_set_id = aws_route53_delegation_set.this.id
 
   tags = merge(var.default-tags, each.value.public-zone-tags, {

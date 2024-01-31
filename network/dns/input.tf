@@ -7,6 +7,7 @@ variable "subdomain-specs" {
   type = map(object({
     name             = string
     public-zone-tags = map(string)
+    comment          = string
   }))
 }
 
