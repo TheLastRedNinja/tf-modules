@@ -11,7 +11,7 @@ locals {
 }
 
 
-##################################################
+###################################################
 ## Subnet
 ###################################################
 
@@ -57,9 +57,10 @@ resource "aws_route" "to-nat-gateway" {
 
   route_table_id         = aws_route_table.this[each.key].id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_nat_gateway.this[each.key].id
+  nat_gateway_id         = aws_nat_gateway.this[each.key].id
 }
 
 ###################################################
 ## NACLs
 ###################################################
+

@@ -5,25 +5,25 @@ variable "root-domain" {
 
 variable "subdomain-specs" {
   type = map(object({
-    name             = string
-    public-zone-tags = map(string)
-    comment          = string
+    domain-name        = string
+    create-public-zone = bool
+    public-zone-tags   = map(string)
+    private-zone-tags  = map(string)
+    comment            = string
   }))
 }
 
 variable "delegation-set-name" {
   description = "Name of delegation to use in hosted zones"
   type        = string
-}
-
-variable "record-mapping" {
-  type = map(list(object({
-    instance-ip = string
-    record-name = string
-  })))
+  default     = ""
 }
 
 variable "default-tags" {
   type    = map(string)
   default = {}
+}
+
+variable "vpc-id" {
+  type = string
 }

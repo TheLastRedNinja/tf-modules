@@ -21,6 +21,6 @@ resource "aws_nat_gateway" "this" {
   subnet_id         = each.value.id
 
   tags = merge(var.default-tags, lookup(var.resource-specific-tags, "aws_nat_gateway", {}), {
-    Name = each.key
+    Name = each.value.tags["Name"]
   })
 }
