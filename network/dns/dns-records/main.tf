@@ -1,16 +1,16 @@
 data "aws_route53_zone" "public-zone" {
-  name         = "${var.dns-domain}.${var.root-domain}"
+  name         = "${var.dns_domain}.${var.root_domain}"
   private_zone = false
 }
 
 data "aws_route53_zone" "private-zone" {
-  name         = "${var.dns-domain}.${var.root-domain}"
+  name         = "${var.dns_domain}.${var.root_domain}"
   private_zone = true
 }
 
 locals {
-  public-record-it  = { for host, ips in var.hosts-in-public-zone : "${host}.${var.dns-domain}" => { host = host, ips = ips } }
-  private-record-it = { for host, ips in var.hosts-in-private-zone : "${host}.${var.dns-domain}" => { host = host, ips = ips } }
+  public-record-it  = { for host, ips in var.hosts_in_public_zone : "${host}.${var.dns_domain}" => { host = host, ips = ips } }
+  private-record-it = { for host, ips in var.hosts_in_private_zone : "${host}.${var.dns_domain}" => { host = host, ips = ips } }
 }
 
 //noinspection HILUnresolvedReference

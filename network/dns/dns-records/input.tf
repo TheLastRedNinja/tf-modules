@@ -1,17 +1,17 @@
-variable "root-domain" {
+variable "root_domain" {
   type = string
 }
 
-variable "dns-domain" {
+variable "dns_domain" {
   type = string
 }
 
-variable "hosts-in-private-zone" {
+variable "hosts_in_private_zone" {
   type    = map(any)
   default = {}
 }
 
-variable "hosts-in-public-zone" {
+variable "hosts_in_public_zone" {
   type    = map(any)
   default = {}
 }

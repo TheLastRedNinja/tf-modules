@@ -1,9 +1,9 @@
-variable "root-domain" {
+variable "root_domain" {
   description = "A list of the registered base domains which will each get it's own hosted zone"
   type        = string
 }
 
-variable "subdomain-specs" {
+variable "subdomain_specs" {
   type = map(object({
     domain-name        = string
     create-public-zone = bool
@@ -13,17 +13,17 @@ variable "subdomain-specs" {
   }))
 }
 
-variable "delegation-set-name" {
+variable "delegation_set_name" {
   description = "Name of delegation to use in hosted zones"
   type        = string
   default     = ""
 }
 
-variable "default-tags" {
+variable "default_tags" {
   type    = map(string)
   default = {}
 }
 
-variable "vpc-id" {
+variable "vpc_id" {
   type = string
 }
